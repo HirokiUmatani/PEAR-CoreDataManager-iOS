@@ -21,7 +21,8 @@
 
 @property (nonatomic,strong)NSString * coreDataName;
 @property (nonatomic,strong)NSString * sqliteName;
-+ (CoreDataManager *)sharedInstanceWithCoreDataName:(NSString *)coreDataName
-                                         sqliteName:(NSString *)sqliteName;
+
++ (CoreDataManager *)createSharedInstanceWithCoreDataName:(NSString *)coreDataName
+                                               sqliteName:(NSString *)sqliteName;
 
 @end

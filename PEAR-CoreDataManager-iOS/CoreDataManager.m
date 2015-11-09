@@ -19,8 +19,13 @@
 static CoreDataManager  *sharedInstance = nil;
 
 #pragma mark - Life Cycle
-+ (CoreDataManager *)sharedInstanceWithCoreDataName:(NSString *)coreDataName
-                                         sqliteName:(NSString *)sqliteName
++ (CoreDataManager *)sharedInstance
+{
+    return sharedInstance;
+}
+
++ (CoreDataManager *)createSharedInstanceWithCoreDataName:(NSString *)coreDataName
+                                               sqliteName:(NSString *)sqliteName
 {
     if(sharedInstance)
         return sharedInstance;
@@ -50,22 +55,26 @@ static CoreDataManager  *sharedInstance = nil;
     if (_managedObjectModel != nil)
         return _managedObjectModel;
 
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:_coreDataName withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:_coreDataName
+                                              withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (_persistentStoreCoordinator != nil) {
+    if (_persistentStoreCoordinator != nil)
         return _persistentStoreCoordinator;
-    }
     
     NSURL *storeURL = [[self applicationLibraryDirectory] URLByAppendingPathComponent:_sqliteName];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                   configuration:nil
+                                                             URL:storeURL
+                                                         options:nil
+                                                           error:&error])
     {
         abort();
     }

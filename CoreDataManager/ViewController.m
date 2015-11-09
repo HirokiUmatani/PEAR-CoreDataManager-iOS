@@ -17,9 +17,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    CoreDataManager *coreDataManager =[CoreDataManager sharedInstanceWithCoreDataName:@"CoreDataManager" sqliteName:@"CoreDataSqlite"];
-    [coreDataManager managedObjectContext];
+
+    // to create 1st call
+    CoreDataManager *coreDataManager =[CoreDataManager createSharedInstanceWithCoreDataName:@"CoreDataManager" sqliteName:@"CoreDataSqlite"];
+    
+    NSManagedObjectContext *managedObjectContext = [coreDataManager managedObjectContext];
 }
 
 - (void)didReceiveMemoryWarning {
