@@ -43,7 +43,8 @@ static CoreDataManager  *sharedInstance = nil;
         return _managedObjectContext;
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
+    if (coordinator != nil)
+    {
         _managedObjectContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
@@ -57,6 +58,7 @@ static CoreDataManager  *sharedInstance = nil;
 
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:_coreDataName
                                               withExtension:@"momd"];
+    _coreDataName = nil;
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -67,7 +69,7 @@ static CoreDataManager  *sharedInstance = nil;
         return _persistentStoreCoordinator;
     
     NSURL *storeURL = [[self applicationLibraryDirectory] URLByAppendingPathComponent:_sqliteName];
-    
+    _sqliteName = nil;
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
