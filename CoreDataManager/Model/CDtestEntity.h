@@ -9,14 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface CDtestEntity : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
+@property (nonatomic, retain) NSNumber *num;
 
 @end
 
-NS_ASSUME_NONNULL_END
 
-#import "CDtestEntity+CoreDataProperties.h"

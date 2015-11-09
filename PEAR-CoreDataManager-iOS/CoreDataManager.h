@@ -12,17 +12,20 @@
 //extern NSString * const CONST_CORE_DATA_SAVE_ERROR;
 //extern NSString * const CONST_CORE_DATA_FETCH_NO_DATA;
 //extern NSString * const CONST_CORE_DATA_SEARCH;
+/*** save success blocks */
+typedef void (^CoreDataSaveSuccess)();
 
+/*** save failed blocks */
+typedef void (^CoreDataSaveFailed)(NSError *error);
 @interface CoreDataManager : NSObject
 
 @property (nonatomic,strong)NSManagedObjectModel         *managedObjectModel;
 @property (nonatomic,strong)NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,strong)NSManagedObjectContext       *managedObjectContext;
-
-@property (nonatomic,strong)NSString * coreDataName;
-@property (nonatomic,strong)NSString * sqliteName;
 + (CoreDataManager *)sharedInstance;
-+ (CoreDataManager *)createSharedInstanceWithCoreDataName:(NSString *)coreDataName
-                                               sqliteName:(NSString *)sqliteName;
-
++ (void)initSettingWithCoreDataName:(NSString *)coreDataName
+                         sqliteName:(NSString *)sqliteName;
++ (id)createInsertEntityWithClassName:(NSString *)className;
++ (void)saveWithSuccess:(CoreDataSaveSuccess)success
+                 failed:(CoreDataSaveFailed)failed;
 @end

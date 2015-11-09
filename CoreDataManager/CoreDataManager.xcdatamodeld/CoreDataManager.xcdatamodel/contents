@@ -2,8 +2,11 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="CDtestEntity" representedClassName="CDtestEntity" syncable="YES">
         <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="CDtestEntity"/>
+        </fetchedProperty>
     </entity>
     <elements>
-        <element name="CDtestEntity" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="CDtestEntity" positionX="-63" positionY="-18" width="128" height="86"/>
     </elements>
 </model>

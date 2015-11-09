@@ -8,8 +8,12 @@
 
 #import "ViewController.h"
 #import "CoreDataManager.h"
+#import "CDtestEntity.h"
+
+
+
 @interface ViewController ()
-@property (nonatomic,strong)CoreDataManager *coreDataManager;
+@property CoreDataManager *coreDataManager;
 @end
 
 @implementation ViewController
@@ -17,21 +21,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // to create 1st call
-    _coreDataManager =[CoreDataManager createSharedInstanceWithCoreDataName:@"CoreDataManager" sqliteName:@"CoreDataSqlite"];
+    // initial
+    [CoreDataManager initSettingWithCoreDataName:@"CoreDataManager"
+                                      sqliteName:@"CoreDataSqlite"];
     
-    NSManagedObjectContext *managedObjectContext = [_coreDataManager managedObjectContext];
-    NSLog(@"1 %@",_coreDataManager);
-    
-    for (int i =0; i< 1000000; i ++)
+    // insert
+    CDtestEntity *insertTestEntity = [CoreDataManager createInsertEntityWithClassName:@"CDtestEntity"];
+    insertTestEntity.num = @(5);
+    [CoreDataManager saveWithSuccess:^
     {
-        _coreDataManager = [CoreDataManager sharedInstance];
         
     }
-    NSLog(@"2 %@",_coreDataManager);
-   
-
+                   failed:^(NSError *error)
+    {
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -17,8 +17,7 @@
 		F4843ACE1BF06ECD00FA8F86 /* CoreDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843ACD1BF06ECD00FA8F86 /* CoreDataManagerTests.m */; };
 		F4843AD91BF06ECD00FA8F86 /* CoreDataManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AD81BF06ECD00FA8F86 /* CoreDataManagerUITests.m */; };
 		F4843AE91BF06FB300FA8F86 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AE81BF06FB300FA8F86 /* CoreDataManager.m */; };
-		F4843AF11BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AEE1BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.m */; };
-		F4843AF21BF07C6900FA8F86 /* CDtestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AF01BF07C6900FA8F86 /* CDtestEntity.m */; };
+		F4E6D0B81BF0C83F00BFFF3C /* CDtestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E6D0B61BF0C83F00BFFF3C /* CDtestEntity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +57,8 @@
 		F4843ADA1BF06ECD00FA8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4843AE71BF06FB300FA8F86 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		F4843AE81BF06FB300FA8F86 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
-		F4843AED1BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CDtestEntity+CoreDataProperties.h"; path = "CoreDataManager/Model/CDtestEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
-		F4843AEE1BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CDtestEntity+CoreDataProperties.m"; path = "CoreDataManager/Model/CDtestEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
-		F4843AEF1BF07C6900FA8F86 /* CDtestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDtestEntity.h; path = CoreDataManager/Model/CDtestEntity.h; sourceTree = "<group>"; };
-		F4843AF01BF07C6900FA8F86 /* CDtestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDtestEntity.m; path = CoreDataManager/Model/CDtestEntity.m; sourceTree = "<group>"; };
+		F4E6D0B51BF0C83F00BFFF3C /* CDtestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDtestEntity.h; path = CoreDataManager/Model/CDtestEntity.h; sourceTree = "<group>"; };
+		F4E6D0B61BF0C83F00BFFF3C /* CDtestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDtestEntity.m; path = CoreDataManager/Model/CDtestEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +89,8 @@
 		F4843AA41BF06ECC00FA8F86 = {
 			isa = PBXGroup;
 			children = (
+				F4E6D0B51BF0C83F00BFFF3C /* CDtestEntity.h */,
+				F4E6D0B61BF0C83F00BFFF3C /* CDtestEntity.m */,
 				F4843AE61BF06F2500FA8F86 /* PEAR-CoreDataManager-iOS */,
 				F4843AAF1BF06ECD00FA8F86 /* CoreDataManager */,
 				F4843ACC1BF06ECD00FA8F86 /* CoreDataManagerTests */,
@@ -166,10 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				F4843ABC1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld */,
-				F4843AED1BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.h */,
-				F4843AEE1BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.m */,
-				F4843AEF1BF07C6900FA8F86 /* CDtestEntity.h */,
-				F4843AF01BF07C6900FA8F86 /* CDtestEntity.m */,
 			);
 			name = Model;
 			path = ..;
@@ -309,8 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4843AB81BF06ECD00FA8F86 /* ViewController.m in Sources */,
-				F4843AF21BF07C6900FA8F86 /* CDtestEntity.m in Sources */,
-				F4843AF11BF07C6900FA8F86 /* CDtestEntity+CoreDataProperties.m in Sources */,
+				F4E6D0B81BF0C83F00BFFF3C /* CDtestEntity.m in Sources */,
 				F4843AB51BF06ECD00FA8F86 /* AppDelegate.m in Sources */,
 				F4843AE91BF06FB300FA8F86 /* CoreDataManager.m in Sources */,
 				F4843ABE1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld in Sources */,
@@ -405,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -443,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,6 +534,7 @@
 				F4843ADF1BF06ECD00FA8F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4843AE01BF06ECD00FA8F86 /* Build configuration list for PBXNativeTarget "CoreDataManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +543,7 @@
 				F4843AE21BF06ECD00FA8F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4843AE31BF06ECD00FA8F86 /* Build configuration list for PBXNativeTarget "CoreDataManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +552,7 @@
 				F4843AE51BF06ECD00FA8F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
