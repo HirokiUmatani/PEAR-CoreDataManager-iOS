@@ -1,5 +1,5 @@
 //
-//  CDtestEntity.h
+//  CDTestEntity.h
 //  CoreDataManager
 //
 //  Created by hirokiumatani on 2015/11/09.
@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface CDtestEntity : NSManagedObject
+@interface CDTestEntity : NSManagedObject
 
-@property (nonatomic, retain) NSNumber *num;
-
+@property (nonatomic, strong) NSNumber *num;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *id;
 @end
 
 

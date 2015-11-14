@@ -8,14 +8,9 @@
 
 #import "CoreDataManager.h"
 
-//NSString * const CONST_CORE_DATA_ERROR          = @"CoreData error";
-//NSString * const CONST_CORE_DATA_FETCH_ERROR    = @"CoreData fetch failed";
-//NSString * const CONST_CORE_DATA_SAVE_ERROR     = @"CoreData save failed";
-//NSString * const CONST_CORE_DATA_FETCH_NO_DATA  = @"CoreData fetch No data";
-//NSString * const CONST_CORE_DATA_SEARCH         = @"%K=%@";
-
 @implementation CoreDataManager
 
+static dispatch_semaphore_t _semaphore = nil;
 static CoreDataManager  *_sharedInstance = nil;
 
 #pragma mark - Initial
@@ -26,6 +21,7 @@ static CoreDataManager  *_sharedInstance = nil;
     dispatch_once(&oneTime, ^
     {
         _sharedInstance = [self new];
+        _semaphore = dispatch_semaphore_create(0);
         [_sharedInstance managedObjectContextWithCoreDataName:coreDataName sqliteName:sqliteName];
     });
 }
@@ -34,33 +30,102 @@ static CoreDataManager  *_sharedInstance = nil;
 {
     if (!_sharedInstance)
     {
-        NSLog(@"Have not finish the first call the initSettingWithCoreDataName:sqliteName");
+        NSLog(@"must call 'initSettingWithCoreDataName:sqliteName' the first.");
     }
     return _sharedInstance;
 }
 
-
+#pragma mark - Insert
 + (id)createInsertEntityWithClassName:(NSString *)className
 {
     return [NSEntityDescription insertNewObjectForEntityForName:className
-                                              inManagedObjectContext:[CoreDataManager sharedInstance].managedObjectContext];
+                                         inManagedObjectContext:[CoreDataManager sharedInstance].managedObjectContext];
 }
 
+#pragma mark - Save
 + (void)saveWithSuccess:(CoreDataSaveSuccess)success
-                 failed:(CoreDataSaveFailed)failed
+                 failed:(CoreDataFailed)failed
 {
+    
+    _THREAD_START
     NSError *error = nil;
     BOOL ret = [[CoreDataManager sharedInstance].managedObjectContext save:&error];
     if (ret)
     {
         success();
+        
     }
     else
     {
         failed(error);
     }
+    _THREAD_END
 }
 
+#pragma mark - Fetch
++ (void)fetchWithEntity:(NSString *)entityClass
+                   Predicate:(NSPredicate *)predicate
+                     success:(CoreDataFetchSuccess)success
+                      failed:(CoreDataFailed)failed
+{
+    _THREAD_START
+    
+    NSManagedObjectContext *managedObjectContext = [CoreDataManager sharedInstance].managedObjectContext;
+    NSFetchRequest *request = [NSFetchRequest new];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityClass
+                                              inManagedObjectContext:managedObjectContext];
+    [request setEntity:entity];
+    
+    /*** Predicate ***/
+    if (predicate)
+    {
+        [request setPredicate:predicate];
+    }
+    
+    
+    /*** Error ***/
+    NSError *error;
+    NSArray *fetchLists = [managedObjectContext executeFetchRequest:request error:&error];
+    if (error)
+    {
+        failed(error);
+    }
+    else
+    {
+        success(fetchLists);
+    }
+    
+    _THREAD_END
+}
+
++ (void)autoIncrementIDWithEntityClass:(NSString *)entityClass
+                               success:(CoreDataNewCreateIDSuccess)success
+                                failed:(CoreDataFailed)failed;
+{
+    _THREAD_START
+    
+    NSManagedObjectContext *managedObjectContext = [CoreDataManager sharedInstance].managedObjectContext;
+    NSFetchRequest *request = [NSFetchRequest new];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityClass
+                                              inManagedObjectContext:managedObjectContext];
+    [request setEntity:entity];
+    
+    
+    NSError *error;
+    NSArray *fetchLists = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (error)
+    {
+        failed(error);
+    }
+    else
+    {
+        success(fetchLists.count);
+    }
+    
+    _THREAD_END
+    
+}
 
 #pragma mark -  private
 
