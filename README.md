@@ -55,9 +55,7 @@ insertEntity.name = @"test";
 ```
 
 □update
-```
 I have created a method.
-```
 
 □fetch
 ```
@@ -78,9 +76,8 @@ I have created a method.
 ```
 
 □delete
-```
 I have created a method.
-```
+
 ### Documents
 [library document](http://cocoadocs.org/docsets/PEAR-CoreDataManager-iOS)
 
