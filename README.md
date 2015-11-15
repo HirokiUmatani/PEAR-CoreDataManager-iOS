@@ -3,6 +3,8 @@
 ====
 ### Overview
 This ios library can be to create and manage the CoreData.
+### Demo
+![autolayout_demo](http://pear.chat/image/coredata-demo-o.gif)
 
 ### Installation
 <code>
