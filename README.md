@@ -76,7 +76,23 @@ I have created a method.
 ```
 
 #### □ delete
-I have created a method.
+```
+[_coreDataManager fetchWithEntity:TEST_ENTITY
+                            Predicate:nil
+                              success:^(NSArray *fetchLists)
+    {
+        // delete entity
+        for (CDTestEntity *deleteEntity in fetchLists)
+        {
+            [_coreDataManager deleteWithEntity:deleteEntity];
+        }
+        
+    }
+                               failed:^(NSError *error)
+    {
+        
+    }];
+```
 
 ### Documents
 [library document](http://cocoadocs.org/docsets/PEAR-CoreDataManager-iOS)
