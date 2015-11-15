@@ -14,8 +14,17 @@ pod 'PEAR-CoreDataManager-iOS'
 2. Create entity model in data model
 3. Create attribute & type in entity model
 4. Create entity class <.h.m>
-5. 
 
+□import header file
+```
+#import "CoreDataManager.h"
+```
+
+□initialize
+```
+[CoreDataManager initSettingWithCoreDataName:@"CoreDataManager"
+                                      sqliteName:@"CoreDataSqlite"];
+```
 ### Documents
 [library document](http://cocoadocs.org/docsets/PEAR-CoreDataManager-iOS)
 
