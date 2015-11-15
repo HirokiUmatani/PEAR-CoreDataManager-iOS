@@ -126,7 +126,25 @@ static CoreDataManager  *_sharedInstance = nil;
     _THREAD_END
     
 }
-
+#pragma mark - Predicate
++ (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
+                                    searchValue:(id)searchValue
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=%@",searchkey,searchValue];
+    return predicate;
+}
++ (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
+                                    searchValue:(id)searchValue
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=>%@",searchkey,searchValue];
+    return predicate;
+}
++ (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
+                                    searchValue:(id)searchValue
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=<%@",searchkey,searchValue];
+    return predicate;
+}
 #pragma mark -  private
 
 - (NSManagedObjectContext *)managedObjectContextWithCoreDataName:(NSString *)coreDataName

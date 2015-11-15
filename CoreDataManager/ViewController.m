@@ -102,7 +102,7 @@
          _logString = @"id | num | name";
          for (CDTestEntity *fetchEntity in fetchLists)
          {
-             _logString = [NSString stringWithFormat:@"%@\n%@ | %@ | %@",_logString,fetchEntity.id,fetchEntity.num,fetchEntity.name];
+             _logString = [NSString stringWithFormat:@"%@| %@ | %@ \n%@",fetchEntity.id,fetchEntity.num,fetchEntity.name,_logString];
          }
         
      }
@@ -110,7 +110,7 @@
      {
          
      }];
-    _textLabel.text = _logString;
+    _textLabel.text =[NSString stringWithFormat:@"%@\n\n%@",@"id | num | name", _logString];
 }
 
 - (IBAction)tapInsertButton:(UIButton *)sender

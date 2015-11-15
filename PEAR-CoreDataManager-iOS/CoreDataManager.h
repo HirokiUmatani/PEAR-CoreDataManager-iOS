@@ -36,48 +36,29 @@ typedef void (^CoreDataFailed)(NSError *error);
 @property (nonatomic,strong)NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,strong)NSManagedObjectContext       *managedObjectContext;
 
+#pragma mark - Initialize
 /**
- First setting of CoreData and sqllite. 
- must call the first.
- 
+ First setting of CoreData and sqllite. must call the first.
  @param :coreDataName This is name of coredata. Set the same name as the 'xcdatamodeld'.
  @param :sqliteName This is name of sqlite name.
  */
 + (void)initSettingWithCoreDataName:(NSString *)coreDataName
                          sqliteName:(NSString *)sqliteName;
 
+#pragma mark - Singletone
 /**
  return the singleton instance
  @return The singleton instatnce
  */
 + (CoreDataManager *)sharedInstance;
 
+#pragma mark - insert
 /**
  Create the insert entity.
  @param :className class name of entity.
  @return id Insert entity.
  */
 + (id)createInsertEntityWithClassName:(NSString *)className;
-
-/**
- Save data of entity
- @return :success Call back the success.
- @return :faied Call back the error.
- */
-+ (void)saveWithSuccess:(CoreDataSaveSuccess)success
-                 failed:(CoreDataFailed)failed;
-
-/**
- fetch entity lists
- @param :entityClass class name of entity.
- @param :predicate Setting the search condition
- @return :success Call back the entity lists.
- @return :faied Call back the error.
- */
-+ (void)fetchWithEntity:(NSString *)entityClass
-              Predicate:(NSPredicate *)predicate
-                success:(CoreDataFetchSuccess)success
-                 failed:(CoreDataFailed)failed;
 
 /**
  When creates the new entity , create the auto increment number.
@@ -89,4 +70,54 @@ typedef void (^CoreDataFailed)(NSError *error);
                                success:(CoreDataNewCreateIDSuccess)success
                                 failed:(CoreDataFailed)failed;
 
+#pragma mark - save
+/**
+ Save data of entity
+ @return :success Call back the success.
+ @return :faied Call back the error.
+ */
++ (void)saveWithSuccess:(CoreDataSaveSuccess)success
+                 failed:(CoreDataFailed)failed;
+
+#pragma mark - fetch
+/**
+ fetch entity lists
+ @param :entityClass class name of entity.
+ @param :predicate Setting the search condition.
+ @return :success Call back the entity lists.
+ @return :faied Call back the error.
+ */
++ (void)fetchWithEntity:(NSString *)entityClass
+              Predicate:(NSPredicate *)predicate
+                success:(CoreDataFetchSuccess)success
+                 failed:(CoreDataFailed)failed;
+
+
+#pragma mark - predicate
+/**
+ Create the Equal serch condition.
+ @param :searchKey search attribute of entity.
+ @return :value search value.
+ @return Search condition instance.
+ */
++ (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
+                                    searchValue:(id)searchValue;
+
+/**
+ Create the Over serch condition.
+ @param :searchKey search attribute of entity.
+ @return :value search value.
+ @return Search condition instance.
+ */
++ (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
+                                    searchValue:(id)searchValue;
+
+/**
+ Create the Under serch condition.
+ @param :searchKey search attribute of entity.
+ @return :value search value.
+ @return Search condition instance.
+ */
++ (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
+                                     searchValue:(id)searchValue;
 @end
