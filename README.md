@@ -9,6 +9,13 @@ This ios library can be to create and manage the CoreData.
 pod 'PEAR-CoreDataManager-iOS'
 </code>
 
+### Usage
+1. Create data model <.xcdatamodeld>
+2. Create entity model in data model
+3. Create attribute & type in entity model
+4. Create entity class <.h.m>
+5. 
+
 ### Documents
 [library document](http://cocoadocs.org/docsets/PEAR-CoreDataManager-iOS)
 
