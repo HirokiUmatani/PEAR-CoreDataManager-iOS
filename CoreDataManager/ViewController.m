@@ -14,6 +14,7 @@
 #import "CDTestEntity.h"
 
 @interface ViewController ()
+#define TEST_ENTITY @"CDTestEntity"
 /******************
       property
  ******************/
@@ -35,6 +36,7 @@
 
 // IBAction
 - (IBAction)tapInsertButton:(UIButton *)sender;
+- (IBAction)tapAllDeleteButton:(UIButton *)sender;
 @end
 
 @implementation ViewController
@@ -59,14 +61,15 @@
     // initialize CoreData
     [CoreDataManager initSettingWithCoreDataName:@"CoreDataManager"
                                       sqliteName:@"CoreDataSqlite"];
+    _coreDataManager = [CoreDataManager sharedInstance];
 }
 - (void)insertSmaple
 {
     // create insert instance of CoreData
-    CDTestEntity *insertEntity = [CoreDataManager createInsertEntityWithClassName:@"CDTestEntity"];
+    CDTestEntity *insertEntity = [_coreDataManager createInsertEntityWithClassName:TEST_ENTITY];
     
     // set auto increment id
-    [CoreDataManager autoIncrementIDWithEntityClass:@"CDTestEntity"
+    [_coreDataManager autoIncrementIDWithEntityClass:TEST_ENTITY
                                             success:^(NSInteger new_create_id)
      {
          insertEntity.id = @(new_create_id);
@@ -81,28 +84,21 @@
     insertEntity.name = @"test";
     
     // save insert data
-    [CoreDataManager saveWithSuccess:^
-     {
-         NSLog(@"success save");
-     }
-                              failed:^(NSError *error)
-     {
-         
-     }];
+    [_coreDataManager save];
 }
 
 - (void)fetchSample
 {
     // fetch all data
-    [CoreDataManager fetchWithEntity:@"CDTestEntity"
+    [_coreDataManager fetchWithEntity:TEST_ENTITY
                            Predicate:nil
                              success:^(NSArray *fetchLists)
      {
          // display the data
-         _logString = @"id | num | name";
+         _logString = @" id | num | name ";
          for (CDTestEntity *fetchEntity in fetchLists)
          {
-             _logString = [NSString stringWithFormat:@"%@| %@ | %@ \n%@",fetchEntity.id,fetchEntity.num,fetchEntity.name,_logString];
+             _logString = [NSString stringWithFormat:@" %@ | %@ | %@ \n%@",fetchEntity.id,fetchEntity.num,fetchEntity.name,_logString];
          }
         
      }
@@ -110,14 +106,39 @@
      {
          
      }];
-    _textLabel.text =[NSString stringWithFormat:@"%@\n\n%@",@"id | num | name", _logString];
+    _textLabel.text =[NSString stringWithFormat:@"%@\n\n%@",@" id | num | name", _logString];
 }
 
+- (void)deleteSample
+{
+    // fetch all data
+    [_coreDataManager fetchWithEntity:TEST_ENTITY
+                            Predicate:nil
+                              success:^(NSArray *fetchLists)
+    {
+        // delete entity
+        for (CDTestEntity *deleteEntity in fetchLists)
+        {
+            [_coreDataManager deleteWithEntity:deleteEntity];
+        }
+        
+    }
+                               failed:^(NSError *error)
+    {
+        
+    }];
+}
 - (IBAction)tapInsertButton:(UIButton *)sender
 {
     [self insertSmaple];
     [self fetchSample];
     
+}
+
+- (IBAction)tapAllDeleteButton:(UIButton *)sender
+{
+    [self deleteSample];
+    [self fetchSample];
 }
 
 @end

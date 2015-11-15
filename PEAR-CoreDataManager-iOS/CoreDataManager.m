@@ -36,41 +36,29 @@ static CoreDataManager  *_sharedInstance = nil;
 }
 
 #pragma mark - Insert
-+ (id)createInsertEntityWithClassName:(NSString *)className
+- (id)createInsertEntityWithClassName:(NSString *)className
 {
     return [NSEntityDescription insertNewObjectForEntityForName:className
-                                         inManagedObjectContext:[CoreDataManager sharedInstance].managedObjectContext];
+                                         inManagedObjectContext:[_sharedInstance managedObjectContext]];
 }
 
 #pragma mark - Save
-+ (void)saveWithSuccess:(CoreDataSaveSuccess)success
-                 failed:(CoreDataFailed)failed
+- (void)save
 {
     
     _THREAD_START
     NSError *error = nil;
-    BOOL ret = [[CoreDataManager sharedInstance].managedObjectContext save:&error];
-    if (ret)
-    {
-        success();
-        
-    }
-    else
-    {
-        failed(error);
-    }
+    [[_sharedInstance managedObjectContext] save:&error];
     _THREAD_END
 }
 
 #pragma mark - Fetch
-+ (void)fetchWithEntity:(NSString *)entityClass
+- (void)fetchWithEntity:(NSString *)entityClass
                    Predicate:(NSPredicate *)predicate
                      success:(CoreDataFetchSuccess)success
                       failed:(CoreDataFailed)failed
 {
-    _THREAD_START
-    
-    NSManagedObjectContext *managedObjectContext = [CoreDataManager sharedInstance].managedObjectContext;
+    NSManagedObjectContext *managedObjectContext = [_sharedInstance managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityClass
                                               inManagedObjectContext:managedObjectContext];
@@ -94,17 +82,13 @@ static CoreDataManager  *_sharedInstance = nil;
     {
         success(fetchLists);
     }
-    
-    _THREAD_END
 }
 
-+ (void)autoIncrementIDWithEntityClass:(NSString *)entityClass
+- (void)autoIncrementIDWithEntityClass:(NSString *)entityClass
                                success:(CoreDataNewCreateIDSuccess)success
                                 failed:(CoreDataFailed)failed;
 {
-    _THREAD_START
-    
-    NSManagedObjectContext *managedObjectContext = [CoreDataManager sharedInstance].managedObjectContext;
+    NSManagedObjectContext *managedObjectContext = [_sharedInstance managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityClass
                                               inManagedObjectContext:managedObjectContext];
@@ -122,24 +106,29 @@ static CoreDataManager  *_sharedInstance = nil;
     {
         success(fetchLists.count);
     }
-    
-    _THREAD_END
+}
+#pragma mark - delete
+- (void)deleteWithEntity:(id)entity
+{
+    NSManagedObjectContext *managedObjectContext = [_sharedInstance managedObjectContext];
+    [managedObjectContext deleteObject:entity];
+    [self save];
     
 }
 #pragma mark - Predicate
-+ (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
                                     searchValue:(id)searchValue
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=%@",searchkey,searchValue];
     return predicate;
 }
-+ (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
                                     searchValue:(id)searchValue
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=>%@",searchkey,searchValue];
     return predicate;
 }
-+ (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
                                     searchValue:(id)searchValue
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K=<%@",searchkey,searchValue];
