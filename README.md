@@ -48,7 +48,26 @@ insertEntity.name = @"test";
 ```
 
 #### □ update
-I have created a method.
+```
+// search condition
+    NSPredicate *pred = [_coreDataManager setPredicateOverWithSearchKey:@"id" searchValue:@(0)];
+    // fetch data
+    [_coreDataManager fetchWithEntity:TEST_ENTITY
+                            Predicate:pred
+                              success:^(NSArray *fetchLists)
+    {
+        // update
+        for (CDTestEntity *updateEntity in fetchLists)
+        {
+            updateEntity.name = @"update_test";
+            [_coreDataManager save];
+        }
+    }
+                               failed:^(NSError *error)
+    {
+        
+    }];
+```
 
 #### □ fetch
 ```
