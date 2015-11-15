@@ -10,31 +10,31 @@ pod 'PEAR-CoreDataManager-iOS'
 </code>
 
 ### Usage
-example:
-Data model : CoreDataManager.xcdatamodeld
-Entity model : CDTestEntity
-attribute : type of Entity 
-id   : integer64
-num  : integer64
-name : String
+[example]    
+Data model : CoreDataManager.xcdatamodeld  
+Entity model : CDTestEntity  
+attribute : type of Entity    
+id   : integer64   
+num  : integer64  
+name : String   
 
 1. Create data model <.xcdatamodeld>
 2. Create entity model in data model
 3. Create attribute & type in entity model
 4. Create entity class <.h.m>
 
-□import header file
+#### □ import header file
 ```
 #import "CoreDataManager.h"
 ```
 
-□initialize
+#### □ initialize
 ```
 [CoreDataManager initSettingWithCoreDataName:@"CoreDataManager"
                                   sqliteName:@"CoreDataSqlite"];
 ```
 
-□insert
+#### □ insert
 ```
 // create insert instance of CoreData
 CDTestEntity *insertEntity = [CoreDataManager createInsertEntityWithClassName:@"CDTestEntity"];
@@ -54,10 +54,10 @@ insertEntity.name = @"test";
 }];
 ```
 
-□update
+#### □ update
 I have created a method.
 
-□fetch
+#### □ fetch
 ```
 // fetch all data
 [CoreDataManager fetchWithEntity:@"CDTestEntity"
@@ -75,7 +75,7 @@ I have created a method.
 }];
 ```
 
-□delete
+#### □ delete
 I have created a method.
 
 ### Documents
