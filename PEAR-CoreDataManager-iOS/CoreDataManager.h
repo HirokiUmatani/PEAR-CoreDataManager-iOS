@@ -58,7 +58,7 @@ typedef void (^CoreDataFailed)(NSError *error);
  @param :className class name of entity.
  @return id Insert entity.
  */
-+ (id)createInsertEntityWithClassName:(NSString *)className;
+- (id)createInsertEntityWithClassName:(NSString *)className;
 
 /**
  When creates the new entity , create the auto increment number.
@@ -66,7 +66,7 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :success Call back the auto increment number.
  @return :faied Call back the error.
  */
-+ (void)autoIncrementIDWithEntityClass:(NSString *)entityClass
+- (void)autoIncrementIDWithEntityClass:(NSString *)entityClass
                                success:(CoreDataNewCreateIDSuccess)success
                                 failed:(CoreDataFailed)failed;
 
@@ -76,8 +76,7 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :success Call back the success.
  @return :faied Call back the error.
  */
-+ (void)saveWithSuccess:(CoreDataSaveSuccess)success
-                 failed:(CoreDataFailed)failed;
+- (void)save;
 
 #pragma mark - fetch
 /**
@@ -87,12 +86,18 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :success Call back the entity lists.
  @return :faied Call back the error.
  */
-+ (void)fetchWithEntity:(NSString *)entityClass
+- (void)fetchWithEntity:(NSString *)entityClass
               Predicate:(NSPredicate *)predicate
                 success:(CoreDataFetchSuccess)success
                  failed:(CoreDataFailed)failed;
 
 
+#pragma mark - delete
+/**
+ Delete entity.
+ @param :entity delete entity.
+ */
+- (void)deleteWithEntity:(id)entity;
 #pragma mark - predicate
 /**
  Create the Equal serch condition.
@@ -100,7 +105,7 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :value search value.
  @return Search condition instance.
  */
-+ (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateEqualWithSearchKey:(NSString *)searchkey
                                     searchValue:(id)searchValue;
 
 /**
@@ -109,7 +114,7 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :value search value.
  @return Search condition instance.
  */
-+ (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateOverWithSearchKey:(NSString *)searchkey
                                     searchValue:(id)searchValue;
 
 /**
@@ -118,6 +123,6 @@ typedef void (^CoreDataFailed)(NSError *error);
  @return :value search value.
  @return Search condition instance.
  */
-+ (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
+- (NSPredicate *)setPredicateUnderWithSearchKey:(NSString *)searchkey
                                      searchValue:(id)searchValue;
 @end

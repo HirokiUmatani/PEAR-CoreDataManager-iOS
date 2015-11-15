@@ -37,11 +37,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="AVf-9H-oJV"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2L-0j-iNA">
+                                <rect key="frame" x="20" y="550" width="66" height="30"/>
+                                <animations/>
+                                <state key="normal" title="All Delete"/>
+                                <connections>
+                                    <action selector="tapAllDeleteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Bv-Im-KHN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="h2L-0j-iNA" secondAttribute="bottom" constant="20" id="2WC-KD-U9V"/>
                             <constraint firstItem="qjK-ou-bmd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3aE-O0-kcz"/>
+                            <constraint firstItem="h2L-0j-iNA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="9Uz-Bd-pPO"/>
                             <constraint firstItem="9d8-TL-K0l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BwC-X9-Fyx"/>
                             <constraint firstItem="9d8-TL-K0l" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KPN-Kp-tUG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qjK-ou-bmd" secondAttribute="bottom" constant="20" id="MsV-d2-ZCq"/>
