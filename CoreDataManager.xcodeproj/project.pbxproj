@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F456606E1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F456606C1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodeld */; };
 		F4843AB21BF06ECD00FA8F86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AB11BF06ECD00FA8F86 /* main.m */; };
 		F4843AB51BF06ECD00FA8F86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AB41BF06ECD00FA8F86 /* AppDelegate.m */; };
 		F4843AB81BF06ECD00FA8F86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843AB71BF06ECD00FA8F86 /* ViewController.m */; };
 		F4843ABB1BF06ECD00FA8F86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4843AB91BF06ECD00FA8F86 /* Main.storyboard */; };
-		F4843ABE1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4843ABC1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld */; };
 		F4843AC01BF06ECD00FA8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4843ABF1BF06ECD00FA8F86 /* Assets.xcassets */; };
 		F4843AC31BF06ECD00FA8F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4843AC11BF06ECD00FA8F86 /* LaunchScreen.storyboard */; };
 		F4843ACE1BF06ECD00FA8F86 /* CoreDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4843ACD1BF06ECD00FA8F86 /* CoreDataManagerTests.m */; };
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F456606D1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataManager.xcdatamodel; sourceTree = "<group>"; };
 		F4843AAD1BF06ECD00FA8F86 /* CoreDataManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4843AB11BF06ECD00FA8F86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4843AB31BF06ECD00FA8F86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		F4843AB61BF06ECD00FA8F86 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F4843AB71BF06ECD00FA8F86 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F4843ABA1BF06ECD00FA8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F4843ABD1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataManager.xcdatamodel; sourceTree = "<group>"; };
 		F4843ABF1BF06ECD00FA8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4843AC21BF06ECD00FA8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4843AC41BF06ECD00FA8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		F4843ADA1BF06ECD00FA8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4843AE71BF06FB300FA8F86 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		F4843AE81BF06FB300FA8F86 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
-		F4E6D0B51BF0C83F00BFFF3C /* CDTestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDTestEntity.h; path = CoreDataManager/Model/CDTestEntity.h; sourceTree = "<group>"; };
-		F4E6D0B61BF0C83F00BFFF3C /* CDTestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDTestEntity.m; path = CoreDataManager/Model/CDTestEntity.m; sourceTree = "<group>"; };
+		F4E6D0B51BF0C83F00BFFF3C /* CDTestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTestEntity.h; sourceTree = "<group>"; };
+		F4E6D0B61BF0C83F00BFFF3C /* CDTestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTestEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,7 @@
 		F4843AA41BF06ECC00FA8F86 = {
 			isa = PBXGroup;
 			children = (
-				F4E6D0B51BF0C83F00BFFF3C /* CDTestEntity.h */,
-				F4E6D0B61BF0C83F00BFFF3C /* CDTestEntity.m */,
+				F4843AF31BF07CA400FA8F86 /* ModelSample */,
 				F4843AE61BF06F2500FA8F86 /* PEAR-CoreDataManager-iOS */,
 				F4843AAF1BF06ECD00FA8F86 /* CoreDataManager */,
 				F4843ACC1BF06ECD00FA8F86 /* CoreDataManagerTests */,
@@ -112,7 +111,6 @@
 		F4843AAF1BF06ECD00FA8F86 /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				F4843AF31BF07CA400FA8F86 /* Model */,
 				F4843AB31BF06ECD00FA8F86 /* AppDelegate.h */,
 				F4843AB41BF06ECD00FA8F86 /* AppDelegate.m */,
 				F4843AB61BF06ECD00FA8F86 /* ViewController.h */,
@@ -161,13 +159,15 @@
 			path = "PEAR-CoreDataManager-iOS";
 			sourceTree = "<group>";
 		};
-		F4843AF31BF07CA400FA8F86 /* Model */ = {
+		F4843AF31BF07CA400FA8F86 /* ModelSample */ = {
 			isa = PBXGroup;
 			children = (
-				F4843ABC1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld */,
+				F4E6D0B51BF0C83F00BFFF3C /* CDTestEntity.h */,
+				F4E6D0B61BF0C83F00BFFF3C /* CDTestEntity.m */,
+				F456606C1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodeld */,
 			);
-			name = Model;
-			path = ..;
+			name = ModelSample;
+			path = CoreDataManager/Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,11 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F456606E1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodeld in Sources */,
 				F4843AB81BF06ECD00FA8F86 /* ViewController.m in Sources */,
 				F4E6D0B81BF0C83F00BFFF3C /* CDTestEntity.m in Sources */,
 				F4843AB51BF06ECD00FA8F86 /* AppDelegate.m in Sources */,
 				F4843AE91BF06FB300FA8F86 /* CoreDataManager.m in Sources */,
-				F4843ABE1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld in Sources */,
 				F4843AB21BF06ECD00FA8F86 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,14 +557,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F4843ABC1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodeld */ = {
+		F456606C1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F4843ABD1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodel */,
+				F456606D1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodel */,
 			);
-			currentVersion = F4843ABD1BF06ECD00FA8F86 /* CoreDataManager.xcdatamodel */;
-			name = CoreDataManager.xcdatamodeld;
-			path = CoreDataManager/CoreDataManager.xcdatamodeld;
+			currentVersion = F456606D1BF83F8700D8F9A2 /* CoreDataManager.xcdatamodel */;
+			path = CoreDataManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
