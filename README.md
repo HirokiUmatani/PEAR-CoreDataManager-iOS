@@ -44,14 +44,7 @@ insertEntity.num = @((uint)arc4random()%RAND_MAX);
 insertEntity.name = @"test";
     
 // save insert data
-[CoreDataManager saveWithSuccess:^
-{
-    NSLog(@"success save");
-}
-                         failed:^(NSError *error)
-{
-    NSLog(@"%@",error);
-}];
+[CoreDataManager save];
 ```
 
 #### □ update
